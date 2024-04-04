@@ -18,7 +18,10 @@ const Reddit = () => {
         isSuccess
     } = useQuery({
         queryKey: ['posts'],
-        queryFn: getPosts,   
+        queryFn: getPosts,
+        staleTime: 5000, // 5 segundos de cache
+        refetchOnWindowFocus: false, // Não recarregar ao focar na janela
+        retry: 2, // Tentar 2 vezes
     });
 
     function getPosts() {
